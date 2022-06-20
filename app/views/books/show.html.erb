@@ -19,7 +19,7 @@
               <td>
                 <%= @book.body %>
               </td>
-              <% if @user == current_user %>
+              <% if @book.user == current_user %>
               <td>
                 <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
               </td>
