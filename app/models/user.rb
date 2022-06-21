@@ -4,8 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :name, presence: true, length: {minimum: 3, message: "Name is too short (minimum is 2 characters)"}
-  
+  validates :name, presence: true, uniqueness: true, 
+  length: {minimum: 2,message: "Name is too short (minimum is 2 characters)"}
+  validates :name, presence: true, uniqueness: true, 
+  length: {maximum: 20, message: "Name is too long (maximum is 20 characters)"}
+  validates :introduction, length: {maximum: 50, message: "Body is too long (maximum is 200 characters)"}
   has_many :books, dependent: :destroy
   
   has_one_attached :profile_image
